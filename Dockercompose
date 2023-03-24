@@ -4,6 +4,7 @@ services:
     container_name: evershop-db-container
     image: mariadb:latest
     restart: unless-stopped
+    ports: 3306
     volumes:
       - ${DB_PATH}:/var/lib/mysql
     environment:
@@ -18,5 +19,15 @@ services:
     container_name: evershop-container
     image: evershop:latest
     restart: always
-    ports: 3000
-    
+    ports: 
+      - 3000:3000
+    volumes:
+      - ${EVERSHOP_CORE}:/public/
+      - ${EVERSHOP_CORE}:/.evershop/
+      - ${EVERSHOP_CORE}:/.log/
+      - ${EVERSHOP_CORE}:/media/
+    environment:
+
+volumes:
+  evershop:
+  db:
