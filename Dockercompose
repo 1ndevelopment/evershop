@@ -1,7 +1,22 @@
 version: '1.0'
-
 services:
-
   db:
+    container_name: evershop-db-container
+    image: mariadb:latest
+    restart: unless-stopped
+    volumes:
+      - ${DB_PATH}:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: evershop_db
+      MYSQL_USER: evershop_admin_db_user
+      MYSQL_PASSWORD: <insert mysql password secret>
+      MYSQL_ROOT_PASSWORD: <insert mysql root password secret>
+  
+  evershop:
+    depends_on:
+      - db
     container_name: evershop-container
-    image: 
+    image: evershop:latest
+    restart: always
+    ports: 3000
+    
