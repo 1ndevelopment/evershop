@@ -52,5 +52,9 @@
     "babel-plugin-fast-async": "^6.1.2",
     "regenerator-runtime": "^0.13.9",
     "supertest": "^6.2.2"
-  }
+  },
+  "scripts": {
+    "setup": "evershop install",
+    "build": "evershop build",
+    "start": "evershop start"
 }
