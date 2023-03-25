@@ -11,3 +11,5 @@ RUN apk add npm nodejs
 CMD ["echo", "Starting up Evershop Container . . ."]
 
 RUN npx create-evershop-app my-app
+
+EXPOSE 3000
